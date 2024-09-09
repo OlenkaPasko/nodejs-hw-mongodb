@@ -2,7 +2,6 @@ import globals from 'globals';
 import pluginJs from '@eslint/js';
 
 export default [
-  pluginJs.configs.recommended,
   {
     files: ['src/**/*.js'],
     languageOptions: { globals: globals.node },
@@ -12,4 +11,6 @@ export default [
       'no-undef': 'error',
     },
   },
+  pluginJs.configs.recommended,
 ];
+
