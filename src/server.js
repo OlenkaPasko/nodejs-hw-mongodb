@@ -1,20 +1,37 @@
 //логіка роботи  express-серверу
 import express from 'express';
-import contacts from './db/contacts.js';
+import cors from 'cors';
+import pino from 'pino-http';
 
-export const setupServer = () => {
-  const app = express(); // app - web-server
-    app.get("/contacts", (req, res) => {
-    res.send(contacts);
-})
+export const startServer = ()=>{
+
+  const app = express();
+  const logger = pino({
+    transport: {
+      target:"pino-pretti"
+    }
+  })
+  app.use(logger);
+  app.use(cors());
+  app.use(express.json());
+
+  //routes
+
+  app.use((req, res) => {
+    res.status(404).json({
+      message: `${req.url}Not found`,
+    });
+  })
+  //обробка помилок
+
+  app.use((err, req, res, next) => {
+    res.status(500).json({
+      message:console.error.message,
+    })
+  })
+}
 
 
-
-app.listen(3000, () => {
-  console.log('Server running on 3000 PORT');
-});
-
-};
 
 //req -це об'єкт який має інформацію про запит res - це об'єкт який отримує відповідь.res відправляє відповідб тому хто цей запити зробив
 
