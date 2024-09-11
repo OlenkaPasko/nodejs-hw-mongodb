@@ -2,7 +2,7 @@
 import express from 'express';
 import cors from 'cors';
 import pino from 'pino-http';
-
+import { env } from './utils/env.js';
 
 
 
@@ -33,7 +33,7 @@ export const setupServer = () => {
   });
 
   //запуск сервера
-  const PORT = Number(process.env.PORT) || 3000;
+  const PORT = Number(env("PORT",3000));
   app.listen(PORT, () => console.log('Server is running on port {PORT}'));
 };
 
