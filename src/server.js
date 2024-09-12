@@ -5,7 +5,6 @@ import pino from 'pino-http';
 
 import { env } from './utils/env.js';
 
-//import * as contactServices from './services/contacts.js';
 import { getAllContact, getContactById } from './services/contacts.js';
 
 export const setupServer = () => {
@@ -65,8 +64,5 @@ export const setupServer = () => {
   app.listen(PORT, () => console.log('Server running on port 3000'));
 };
 
-  //запуск сервера
-  //const PORT = Number(env('PORT', 3000));
-  //app.listen(PORT, () => console.log('Server running on port 3000'));
-
-//req -це об'єкт який має інформацію про запит res - це об'єкт який отримує відповідь.res відправляє відповідб тому хто цей запити зробив
+//req -це об'єкт який має інформацію про запит res - це об'єкт який отримує відповідь
+//.res відправляє відповідб тому хто цей запити зробив
