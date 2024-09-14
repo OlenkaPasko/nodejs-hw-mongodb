@@ -19,7 +19,8 @@ export const setupServer = () => {
   app.use(cors());
   app.use(express.json());
 
-  app.use('/contacts', contactsRouter);
+  app.use('/contacts', contactsRouter); //якщо прийде будь який запит який читається/contacts то потрібно
+  //шукати обробник запитів у цьому об'єкті contactsRouter!
 
   app.use((req, res) => {
     res.status(404).json({
