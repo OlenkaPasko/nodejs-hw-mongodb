@@ -1,34 +1,22 @@
-import * as contactServises from '../services/contacts.js';
+import createHttpError from 'http-errors';
+import * as contactServices from '../services/contacts.js';
 
-export const getAllContactControllers = async (req, res) => {
-    try {
-        const data = await contactServises.getAllContact();
+export const getAllContactController = async (req, res) => {
+  const data = await contactServices.getAllContact();
 
-        res.json({
-            status: 200,
-            message: 'Successfully found contacts',
-            data,
-        });
-    }
-    catch (error) {
-         const { status = 500, message } = error;
-         res.status(status).json({
-           message: 'Something went wrong',
-         });
-    }
-}
+  res.json({
+    status: 200,
+    message: 'Successfully found contacts',
+    data,
+  });
+};
 
-
-
-export const getContactByIdControllers = async (req, res) => {
-try {
+export const getContactByIdController = async (req, res) => {
   const { id } = req.params;
-  const data = await contactServises.getContactById(id);
+  const data = await contactServices.getContactById(id);
 
   if (!data) {
-    res.status(404).json({
-      message: `${req.url} not found`,
-    });
+    throw createHttpError(404, `Contact with id=${id} not found`);
   }
 
   res.json({
@@ -36,10 +24,4 @@ try {
     message: `Contact with ${id} successfully find`,
     data,
   });
-} catch (error) {
- const { status = 500, message } = error;
- res.status(status).json({
-   message: 'Something went wrong',
- });
-}
 };

@@ -1,9 +1,13 @@
-import { Router } from "express";
-import {getAllContactControllers, getContactByIdControllers} from "../controllers/contacts.js"
+import { Router } from 'express';
+import {
+  getAllContactController,
+  getContactByIdController,
+} from '../controllers/contacts.js';
+import ctrlWrapper from '../utils/ctrlWrapper.js';
 
-const contactsRouter = Router();//об'єкт в який можна додавати маршрут
+const contactsRouter = Router(); //об'єкт в який можна додавати маршрут
 
-contactsRouter.get('/', getAllContactControllers);
+contactsRouter.get('/', ctrlWrapper(getAllContactController));
 
-contactsRouter.get('/:id', getContactByIdControllers);
+contactsRouter.get('/:id', ctrlWrapper(getContactByIdController));
 export default contactsRouter;
