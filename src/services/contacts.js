@@ -13,7 +13,7 @@ export const updateContact = async (filter, data, options = {}) => {
     includeResultMetadata: true,
     ...options,
   });
-  //...options,налаштування оновлення...
+  //...options,налаштування оновлення...includeResultMetadata - чи оновився сервер
   if (!rawResult || !rawResult.value) return null;
 
   return {
