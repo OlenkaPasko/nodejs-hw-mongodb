@@ -1,10 +1,13 @@
 import { Router } from 'express';
-import* as contactControllers from '../controllers/contacts.js';
+import * as contactControllers from '../controllers/contacts.js';
 import ctrlWrapper from '../utils/ctrlWrapper.js';
 
 const contactsRouter = Router(); //об'єкт в який можна додавати маршрут
 
-contactsRouter.get('/', ctrlWrapper(contactControllers.getAllContactController));
+contactsRouter.get(
+  '/',
+  ctrlWrapper(contactControllers.getAllContactController),
+);
 
 contactsRouter.get(
   '/:id',
@@ -12,8 +15,16 @@ contactsRouter.get(
 );
 
 contactsRouter.post('/', ctrlWrapper(contactControllers.addContactController));
-contactsRouter.post(
+contactsRouter.put(
   '/:id',
   ctrlWrapper(contactControllers.upsertContactController),
+);
+contactsRouter.patch(
+  '/:id',
+  ctrlWrapper(contactControllers.patchContactController),
+);
+contactsRouter.delete(
+  '/:id',
+  ctrlWrapper(contactControllers.deleteContactController),
 );
 export default contactsRouter;
