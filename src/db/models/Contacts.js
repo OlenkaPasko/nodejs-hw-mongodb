@@ -29,9 +29,11 @@ const contactSchema = new Schema(
   },
   { versionKey: false, timestamps: true },
 );
-contactSchema.post('save', handleSaveError);
-contactSchema.pre('findOneAndUpdate', setUpdateOptions);
-contactSchema.post('findOneAndUpdate', handleSaveError);
+//монгус-схема, для запитів роботи з базою
+contactSchema.post('save', handleSaveError);//якщо після додавання сталась помилка,виклич цю функцію handleSaveError
+contactSchema.pre('findOneAndUpdate', setUpdateOptions);//якщо перед оновленням,виклич цю функцію setUpdateOptions
+contactSchema.post('findOneAndUpdate', handleSaveError);//якщо після оновлення сталась помилка виклич цю функцію handleSaveError
+
 const ContactCollection = model('contacts', contactSchema);
 
 export default ContactCollection;
