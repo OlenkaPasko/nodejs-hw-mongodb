@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-import { genreList} from '../../constants/contacts.js';
+import { genreList} from '../../constans/contacts.js';
 
 import { handleSaveError, setUpdateOptions } from './hooks.js';
 
@@ -35,5 +35,14 @@ contactSchema.pre('findOneAndUpdate', setUpdateOptions);//якщо перед о
 contactSchema.post('findOneAndUpdate', handleSaveError);//якщо після оновлення сталась помилка виклич цю функцію handleSaveError
 
 const ContactCollection = model('contacts', contactSchema);
+export const sortFields = [
+  'name',
+  'phoneNumber',
+  'email',
+  'isFavourite',
+  'contactType',
+  'createdAt',
+  'updatedAt',
+];
 
 export default ContactCollection;
