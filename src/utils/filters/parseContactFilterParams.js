@@ -1,13 +1,13 @@
-import parseInteger from './parseNumber.js';
+//import parseInteger from './parseNumber.js';
 
-const parseContactFilterParams = ({ minReleaseYear, maxReleaseYear }) => {
-  const parsedMinReleaseYear = parseInteger(minReleaseYear);
-  const parsedMaxReleaseYear = parseInteger(maxReleaseYear);
+//const parseContactFilterParams = ({ minReleaseYear, maxReleaseYear }) => {
+  //const parsedMinReleaseYear = parseInteger(minReleaseYear);
+ // const parsedMaxReleaseYear = parseInteger(maxReleaseYear);
 
-  return {
-    minReleaseYear: parsedMinReleaseYear,
-    maxReleaseYear: parsedMaxReleaseYear,
-  };
-};
+  //return {
+   // minReleaseYear: parsedMinReleaseYear,
+   // maxReleaseYear: parsedMaxReleaseYear,
+  //};
+//};
 
-export default parseContactFilterParams;
+//export default parseContactFilterParams;

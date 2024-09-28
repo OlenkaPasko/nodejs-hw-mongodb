@@ -17,7 +17,6 @@ export const getAllContactController = async (req, res) => {
     page,
     sortBy,
     sortOrder,
-    filter,
   });
 
   res.json({
