@@ -7,17 +7,9 @@ export const getContacts = async ({
   page,
   sortBy = '_id',
   sortOrder = SORT_ORDER[0],
-  filter = {},
 }) => {
   const skip = (page - 1) * perPage;
   const contactQuery = ContactCollection.find();
-
-  if (filter.minReleaseYear) {
-    contactQuery.where('releaseYear').gte(filter.minReleaseYear);
-  }
-  if (filter.maxReleaseYear) {
-    contactQuery.where('releaseYear').lte(filter.maxReleaseYear);
-  }
 
   const contacts = await contactQuery
     .skip(skip)
