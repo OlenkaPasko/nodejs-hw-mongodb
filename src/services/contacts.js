@@ -23,14 +23,10 @@ export const getContacts = async ({
   const paginationData = calculatePaginationData({ count, perPage, page });
 
   return {
-    page,
-    perPage,
-    contacts,
-    totalItems: count,
+    data: contacts,
     ...paginationData,
   };
 };
-
 
 export const getContactById = (id) => ContactCollection.findById(id);
 
