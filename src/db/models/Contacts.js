@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-import { genreList} from '../../constans/contacts.js';
+import { genreList} from '../../constants/contacts.js';
 
 import { handleSaveError, setUpdateOptions } from './hooks.js';
 

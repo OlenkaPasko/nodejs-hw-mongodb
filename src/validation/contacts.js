@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { genreList } from '../constans/contacts.js';
+import { genreList } from '../constants/contacts.js';
 
 export const contactAddSchema = Joi.object({
   name: Joi.string().min(3).max(20).required(),
