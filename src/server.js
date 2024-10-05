@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 
 import { env } from './utils/env.js';
+import authRouter from './routers/auth.js';
 import contactsRouter from './routers/contacts.js';
 
 import notFoundHandler from './middlewares/notFoundHandler.js';
@@ -16,6 +17,7 @@ export const setupServer = () => {
   app.use(cors());
   app.use(express.json());
 
+  app.use('/auth', authRouter);
   app.use('/contacts', contactsRouter); //якщо прийде будь який запит який читається/contacts то потрібно
   //шукати обробник запитів у цьому об'єкті contactsRouter!
 
