@@ -3,7 +3,9 @@ import * as contactControllers from '../controllers/contacts.js';
 
 import ctrlWrapper from '../utils/ctrlWrapper.js';
 
+import authenticate from '../middlewares/authenticate.js';
 import isValidId from '../middlewares/isValidId.js';
+
 import validateBody from '../utils/validateBody.js';
 import {
   contactAddSchema,
@@ -11,6 +13,7 @@ import {
 } from '../validation/contacts.js';
 
 const contactsRouter = Router(); //об'єкт в який можна додавати маршрут
+contactsRouter.use(authenticate);
 
 contactsRouter.get(
   '/',

@@ -8,6 +8,7 @@ import { userSignupSchema, userSigninSchema } from '../validation/users.js';
 
 const authRouter = Router();
 
+
 authRouter.post(
   '/register',
   validateBody(userSignupSchema),
