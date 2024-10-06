@@ -1,5 +1,5 @@
 import * as authServices from '../services/auth.js';
-
+//контролер- це обробник маршруту
 export const signupController = async (req, res, next) => {
   try {
     const newUser = await authServices.signup(req.body);
