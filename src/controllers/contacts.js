@@ -1,16 +1,14 @@
 import createHttpError from 'http-errors';
 import * as contactServices from '../services/contacts.js';
 
-import parsePaginationParams from "../utils/parsePaginationParams.js";
-import parseSortParams from "../utils/parseSortParams.js";
+import parsePaginationParams from '../utils/parsePaginationParams.js';
+import parseSortParams from '../utils/parseSortParams.js';
 
-
-import { sortFields } from "../db/models/Contacts.js";
+import { sortFields } from '../db/models/Contacts.js';
 
 export const getAllContactController = async (req, res) => {
   const { perPage, page } = parsePaginationParams(req.query);
   const { sortBy, sortOrder } = parseSortParams({ ...req.query, sortFields });
-
 
   const data = await contactServices.getContacts({
     perPage,
@@ -41,14 +39,17 @@ export const getContactByIdController = async (req, res) => {
   });
 };
 export const addContactController = async (req, res) => {
+  const data = await contactServices.createContact({
+    ...req.body,
+    userId: req.user._id,
+  });
 
-  const data = await contactServices.createContact(req.body);
-
-res.status(201).json({
-  status: 201,
-  message: 'Contact add successfully',
-  data,
-});};
+  res.status(201).json({
+    status: 201,
+    message: 'Contact add successfully',
+    data,
+  });
+};
 export const upsertContactController = async (req, res) => {
   const { id } = req.params;
   const { isNew, data } = await contactServices.updateContact(
